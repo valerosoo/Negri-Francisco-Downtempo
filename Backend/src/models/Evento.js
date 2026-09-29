@@ -16,4 +16,4 @@ class Evento {
   }
 }
 
-module.exports = Evento;
+export default Evento;

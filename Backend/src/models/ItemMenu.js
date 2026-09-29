@@ -8,4 +8,4 @@ class ItemMenu {
   }
 }
 
-module.exports = ItemMenu;
+export default ItemMenu;

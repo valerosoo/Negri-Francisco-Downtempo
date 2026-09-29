@@ -8,4 +8,4 @@ class DJ {
   }
 }
 
-module.exports = DJ;
+export default DJ;

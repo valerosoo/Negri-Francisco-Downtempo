@@ -6,4 +6,4 @@ class Entrada {
   }
 }
 
-module.exports = Entrada;
+export default Entrada;

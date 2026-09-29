@@ -7,4 +7,4 @@ class Cancion {
   }
 }
 
-module.exports = Cancion;
+export default Cancion;

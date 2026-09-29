@@ -8,4 +8,4 @@ class Recomendacion {
   }
 }
 
-module.exports = Recomendacion;
+export default Recomendacion;

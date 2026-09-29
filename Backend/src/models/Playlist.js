@@ -5,4 +5,4 @@ class Playlist {
   }
 }
 
-module.exports = Playlist;
+export default Playlist;
