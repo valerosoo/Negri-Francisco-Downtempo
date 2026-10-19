@@ -1,0 +1,65 @@
+.dj-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  border-left: 3px solid var(--color-orange);
+  background: var(--color-surface-raised);
+}
+
+.dj-card__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.dj-card__header h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.dj-card__genero {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  white-space: nowrap;
+}
+
+.dj-card__bio {
+  margin-top: var(--space-2);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.dj-card__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.dj-card__like {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.dj-card__like span[aria-hidden] {
+  color: var(--color-orange);
+}
+
+.dj-card__like:hover:not(:disabled) {
+  color: var(--color-text);
+}
+
+.dj-card__manage {
+  display: flex;
+  gap: var(--space-1);
+}

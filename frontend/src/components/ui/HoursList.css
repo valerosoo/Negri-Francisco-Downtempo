@@ -1,0 +1,21 @@
+.hours-list__row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-block: var(--space-1);
+  border-bottom: 1px dashed var(--color-border);
+  font-size: 0.95rem;
+}
+
+.hours-list__row dt {
+  color: var(--color-text-muted);
+}
+
+.hours-list__row dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.hours-list--compact .hours-list__row {
+  font-size: 0.85rem;
+}

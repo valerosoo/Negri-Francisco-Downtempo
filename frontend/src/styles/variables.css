@@ -1,0 +1,39 @@
+:root {
+  /* Paleta — tomada del boceto (Figma): noche + grafiti */
+  --color-void: #0d0d0d;
+  --color-surface: #161616;
+  --color-surface-raised: #232323;
+  --color-surface-hover: #2b2b2b;
+  --color-border: #333333;
+
+  --color-lime: #b6ff3b;
+  --color-lime-ink: #10210a;
+  --color-orange: #ff6b1a;
+
+  --color-text: #f5f5f2;
+  --color-text-muted: #a6a6a6;
+  --color-text-faint: #767676;
+
+  --color-success: #4fd17a;
+  --color-success-bg: #142417;
+  --color-error: #ff6b6b;
+  --color-error-bg: #2a1414;
+
+  --font-display: "Permanent Marker", cursive;
+  --font-body: "Bebas Neue", "Arial Narrow", sans-serif;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 40px;
+  --space-6: 64px;
+  --space-7: 96px;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+
+  --container-max: 1180px;
+
+  --shadow-raised: 0 12px 30px rgba(0, 0, 0, 0.45);
+}

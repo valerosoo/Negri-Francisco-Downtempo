@@ -1,0 +1,10 @@
+.dj-form {
+  margin-top: var(--space-2);
+}
+
+.dj-form__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
