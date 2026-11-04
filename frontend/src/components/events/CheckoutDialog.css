@@ -1,0 +1,146 @@
+.checkout__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3);
+  z-index: 2500;
+  overflow-y: auto;
+}
+
+.checkout {
+  position: relative;
+  width: min(480px, 100%);
+  max-height: 100%;
+  overflow-y: auto;
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-top: 4px solid var(--color-lime);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-raised);
+}
+
+.checkout__close {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-3);
+  font-size: 1.8rem;
+  line-height: 1;
+  color: var(--color-text-muted);
+}
+
+.checkout__close:hover {
+  color: var(--color-lime);
+}
+
+.checkout .eyebrow {
+  color: var(--color-orange);
+}
+
+.checkout__title {
+  font-size: 1.8rem;
+  margin-top: var(--space-1);
+}
+
+.checkout__when {
+  color: var(--color-text-muted);
+  text-transform: capitalize;
+  margin-bottom: var(--space-4);
+}
+
+.checkout__qty {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.checkout__stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--color-border);
+}
+
+.checkout__stepper button {
+  width: 40px;
+  height: 40px;
+  font-size: 1.4rem;
+  color: var(--color-lime);
+}
+
+.checkout__stepper button:disabled {
+  color: var(--color-text-faint);
+  cursor: not-allowed;
+}
+
+.checkout__stepper output {
+  min-width: 44px;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.checkout__stock {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--color-text-faint);
+}
+
+.checkout__total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-block: var(--space-4) var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px dashed var(--color-border);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.checkout__total strong {
+  font-weight: 400;
+  font-size: 2rem;
+  color: var(--color-lime);
+}
+
+.checkout .btn {
+  width: 100%;
+}
+
+.checkout__note {
+  margin-block: var(--space-2) var(--space-3);
+  font-size: 0.85rem;
+  color: var(--color-text-faint);
+}
+
+.checkout__tickets {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* Entrada con "troquel" estilo ticket */
+.ticket {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3);
+  background: var(--color-void);
+  border: 1px dashed var(--color-lime);
+}
+
+.ticket__label {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.ticket__code {
+  font-size: 1.5rem;
+  letter-spacing: 0.18em;
+  color: var(--color-lime);
+}

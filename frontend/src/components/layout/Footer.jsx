@@ -59,7 +59,7 @@ function Footer() {
           <h4 className="footer__heading">Menú</h4>
           <p className="footer__description">
             No pierdas de vista el{" "}
-            <a href="#explora" className="accent">
+            <a href="#menu" className="accent">
               menú
             </a>{" "}
             que te acompañará toda la noche.

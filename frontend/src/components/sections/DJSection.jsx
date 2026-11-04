@@ -1,14 +1,15 @@
 import { useState } from "react";
-import { useAsync } from "../../../utils/useAsync.js";
-import { useToast } from "../../../context/ToastContext.jsx";
-import { getDJs, createDJ, updateDJ, deleteDJ } from "../../../services/djService.js";
-import DJList from "../../dj/DJList.jsx";
-import DJForm from "../../dj/DJForm.jsx";
-import ConfirmDialog from "../../ui/ConfirmDialog.jsx";
+import { useAsync } from "../../utils/useAsync.js";
+import { useToast } from "../../context/ToastContext.jsx";
+import { getDJs, createDJ, updateDJ, deleteDJ } from "../../services/djService.js";
+import DJList from "../dj/DJList.jsx";
+import DJForm from "../dj/DJForm.jsx";
+import ConfirmDialog from "../ui/ConfirmDialog.jsx";
+import SectionHeading from "../ui/SectionHeading.jsx";
 import "./panels.css";
-import "./DJPanel.css";
+import "./DJSection.css";
 
-function DJPanel() {
+function DJSection() {
   const { data: djs, loading, error, reload } = useAsync(getDJs, []);
   const toast = useToast();
 
@@ -79,13 +80,15 @@ function DJPanel() {
   };
 
   return (
-    <div className="panel-grid dj-panel">
+    <section className="section dj-section" id="djs" aria-labelledby="djs-heading">
+      <div className="container">
+        <SectionHeading id="djs-heading" lead="Los DJs de" highlight="Downtempo" />
+        <p className="panel-text dj-section__intro">
+          La música que marca el ritmo de la noche. Dale like a tus favoritos: los más pedidos suben a la cartelera.
+        </p>
+
+        <div className="panel-grid">
       <div className="panel-block">
-        <h3>
-          Música en <span className="accent">Downtempo</span>
-        </h3>
-        <hr className="rule" />
-        <p className="panel-text">La música que marca el ritmo de la noche.</p>
 
         <DJList
           djs={djs ?? []}
@@ -100,7 +103,7 @@ function DJPanel() {
       </div>
 
       <div className="panel-block">
-        <h3>{editingDJ ? `Editando a ${editingDJ.nombre}` : "Si sos DJ..."}</h3>
+        <h3>{editingDJ ? `Editando a ${editingDJ.nombre}` : "¿Sos DJ?"}</h3>
         <hr className="rule" />
         <p className="panel-text">
           {editingDJ
@@ -116,6 +119,9 @@ function DJPanel() {
         />
       </div>
 
+        </div>
+      </div>
+
       <ConfirmDialog
         open={Boolean(pendingDelete)}
         title="Eliminar DJ"
@@ -127,8 +133,8 @@ function DJPanel() {
         onConfirm={handleConfirmDelete}
         onCancel={() => setPendingDelete(null)}
       />
-    </div>
+    </section>
   );
 }
 
-export default DJPanel;
+export default DJSection;

@@ -1,0 +1,11 @@
+.events__intro {
+  max-width: 60ch;
+  color: var(--color-text-muted);
+  margin-block: var(--space-3) var(--space-5);
+}
+
+.events__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}

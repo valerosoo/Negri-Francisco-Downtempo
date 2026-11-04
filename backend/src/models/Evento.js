@@ -1,19 +1,25 @@
 class Evento {
-  constructor(
-    idEvento,
-    fecha,
-    horaInicio,
-    horaFin,
-    capacidadMaxima,
-    entradasDisponibles
-  ) {
-    this.idEvento = idEvento;
-    this.fecha = fecha;
-    this.horaInicio = horaInicio;
-    this.horaFin = horaFin;
-    this.capacidadMaxima = capacidadMaxima;
-    this.entradasDisponibles = entradasDisponibles;
-  }
+    constructor(
+        idEvento,
+        fecha,
+        horaInicio,
+        horaFin,
+        capacidadMaxima,
+        entradasDisponibles,
+        nombre,
+        precio,
+        idsDJ = []
+    ) {
+        this.idEvento = idEvento;
+        this.fecha = fecha;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
+        this.capacidadMaxima = capacidadMaxima;
+        this.entradasDisponibles = entradasDisponibles;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.idsDJ = idsDJ;
+    }
 }
 
 export default Evento;

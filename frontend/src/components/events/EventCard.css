@@ -1,0 +1,143 @@
+.event-card {
+  display: grid;
+  grid-template-columns: 110px 1fr auto;
+  gap: var(--space-4);
+  align-items: center;
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-lime);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.event-card:hover {
+  border-color: var(--color-lime);
+  transform: translateX(4px);
+}
+
+.event-card--ultimas {
+  border-left-color: var(--color-orange);
+}
+
+.event-card--agotado {
+  border-left-color: var(--color-text-faint);
+  opacity: 0.6;
+}
+
+.event-card__date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.event-card__weekday,
+.event-card__month {
+  font-size: 1.05rem;
+  letter-spacing: 0.2em;
+  color: var(--color-text-muted);
+}
+
+.event-card__day {
+  font-family: var(--font-display);
+  font-size: 3.6rem;
+  color: var(--color-lime);
+  padding-block: var(--space-1);
+}
+
+.event-card__name {
+  font-size: 1.8rem;
+}
+
+.event-card__when {
+  margin-top: var(--space-1);
+  color: var(--color-text-muted);
+  text-transform: capitalize;
+  letter-spacing: 0.04em;
+}
+
+.event-card__lineup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.event-card__lineup li {
+  padding: 2px var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.95rem;
+}
+
+.event-card__lineup span {
+  color: var(--color-text-faint);
+  font-size: 0.8rem;
+  margin-left: var(--space-1);
+}
+
+.event-card__buy {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-2);
+  min-width: 170px;
+  text-align: center;
+}
+
+.event-card__price {
+  font-size: 1.7rem;
+  letter-spacing: 0.04em;
+}
+
+.event-card__meter {
+  height: 4px;
+  background: var(--color-border);
+  overflow: hidden;
+}
+
+.event-card__meter span {
+  display: block;
+  height: 100%;
+  background: var(--color-lime);
+}
+
+.event-card--ultimas .event-card__meter span {
+  background: var(--color-orange);
+}
+
+.event-card__stock {
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.event-card--ultimas .event-card__stock {
+  color: var(--color-orange);
+}
+
+@media (max-width: 760px) {
+  .event-card {
+    grid-template-columns: 80px 1fr;
+  }
+
+  .event-card__day {
+    font-size: 2.8rem;
+  }
+
+  .event-card__buy {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .event-card__meter {
+    display: none;
+  }
+}

@@ -56,13 +56,28 @@ frontend/src/
 
 ### Alcance de esta entrega
 
-El sitio es de una sola pantalla (según el boceto de Figma), con una sección
-"Explorá Downtempo" dividida en 4 tabs:
+El sitio es de una sola pantalla pensada para **vender entradas** a las noches
+con DJs. Orden de prioridades de la página:
 
-- **DJ** — conectado en serio contra `/api/djs`: lista, alta, edición, borrado
-  (con confirmación) y likes, todo con estados de carga y notificaciones de
-  éxito/error.
-- **Entrada, Menú y Rooftop** — reproducen el boceto con contenido de
-  ejemplo, porque el backend de esta entrega todavía no expone esos recursos
-  (`src/services/menuService.js` y `rooftopService.js` están armados para
-  que el día que exista el endpoint real, solo cambie esa función).
+1. **Hero** — la próxima fecha con line-up, precio y botón "Comprar entradas".
+2. **Cartelera** — todas las fechas futuras con DJs, cupo restante y compra.
+3. **DJs** — listado con likes y alta/edición/baja (`/api/djs`).
+4. **Menú y Rooftop** — apoyo para conocer el lugar (`/api/menu`).
+
+La compra es **simulada** (no hay cobro): un modal pide cantidad, nombre y
+email, el backend descuenta el cupo y devuelve una entrada con código por cada
+lugar (`DT-XXXXXX`).
+
+## Endpoints nuevos del backend
+
+| Método | Ruta | Descripción |
+| --- | --- | --- |
+| GET | `/api/eventos` | Cartelera ordenada por fecha, con los DJs de cada evento |
+| GET | `/api/eventos/:id` | Un evento |
+| POST / PUT / DELETE | `/api/eventos[/:id]` | Alta, edición y baja (no se borra si ya vendió entradas) |
+| POST | `/api/reservas` | Compra: `{ idEvento, cantidadEntradas (1-6), nombre, email }` |
+| GET | `/api/reservas/:id` | Detalle de una compra con sus entradas |
+| GET | `/api/menu` | Ítems del menú |
+
+Los datos viven en memoria: al reiniciar el backend vuelven a los de ejemplo
+(las fechas de la cartelera se generan relativas a hoy).
