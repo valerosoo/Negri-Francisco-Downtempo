@@ -1,0 +1,22 @@
+.venue-map__frame {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border: 0;
+  border-top: 2px solid var(--color-orange);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-raised);
+  /* El mapa de OSM es claro: se invierte para que acompañe el tema oscuro. */
+  filter: invert(0.92) hue-rotate(180deg) saturate(0.6);
+}
+
+.venue-map__address {
+  margin-top: var(--space-2);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.venue-map__address a {
+  color: var(--color-lime);
+  border-bottom: 1px solid currentColor;
+}

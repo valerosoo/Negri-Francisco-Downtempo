@@ -8,7 +8,8 @@ class Evento {
         entradasDisponibles,
         nombre,
         precio,
-        idsDJ = []
+        idsDJ = [],
+        descripcion = ""
     ) {
         this.idEvento = idEvento;
         this.fecha = fecha;
@@ -19,6 +20,7 @@ class Evento {
         this.nombre = nombre;
         this.precio = precio;
         this.idsDJ = idsDJ;
+        this.descripcion = descripcion;
     }
 }
 

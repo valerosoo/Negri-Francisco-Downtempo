@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Pista con DJ en cabina">
+  <rect width="800" height="600" fill="#0d0d0d"/>
+  <g opacity="0.35"><polygon points="200,0 60,600 300,600" fill="#b6ff3b"/><polygon points="600,0 500,600 760,600" fill="#ff6b1a"/>
+    <polygon points="400,0 320,600 480,600" fill="#f5f5f2" opacity="0.5"/></g>
+  <rect x="270" y="300" width="260" height="90" fill="#232323" stroke="#b6ff3b" stroke-width="3"/>
+  <g fill="#0d0d0d" stroke="#f5f5f2" stroke-width="3"><circle cx="330" cy="345" r="26"/><circle cx="470" cy="345" r="26"/></g>
+  <circle cx="330" cy="345" r="5" fill="#ff6b1a"/><circle cx="470" cy="345" r="5" fill="#ff6b1a"/>
+  <g fill="#161616"><circle cx="400" cy="235" r="30"/><rect x="365" y="262" width="70" height="50" rx="12"/></g>
+  <path d="M368 232 a32 32 0 0 1 64 0" fill="none" stroke="#b6ff3b" stroke-width="6"/>
+  <g fill="#050505"><circle cx="90" cy="500" r="42"/><circle cx="210" cy="520" r="48"/><circle cx="340" cy="505" r="40"/>
+    <circle cx="460" cy="525" r="50"/><circle cx="590" cy="500" r="42"/><circle cx="710" cy="520" r="46"/>
+    <rect x="0" y="530" width="800" height="70"/>
+    <rect x="150" y="400" width="14" height="110" transform="rotate(-18 157 455)"/><rect x="520" y="390" width="14" height="120" transform="rotate(14 527 450)"/>
+    <rect x="660" y="410" width="14" height="100" transform="rotate(-10 667 460)"/></g>
+</svg>

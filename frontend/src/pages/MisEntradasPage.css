@@ -1,0 +1,151 @@
+.mis-entradas {
+  max-width: 820px;
+}
+
+.mis-entradas__form {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.mis-entradas__form .form-field {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* Con error el campo crece hacia abajo: el botón sigue alineado al input. */
+.mis-entradas__form:has(.form-field__error) {
+  align-items: flex-start;
+}
+
+.mis-entradas__form:has(.form-field__error) .btn {
+  margin-top: 1.7em;
+}
+
+.mis-entradas__count {
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  margin-bottom: var(--space-3);
+  overflow-wrap: anywhere;
+}
+
+.mis-entradas__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.reserva {
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-lime);
+}
+
+.reserva--cancelada {
+  border-left-color: var(--color-text-faint);
+}
+
+.reserva__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.reserva__title {
+  font-size: 1.6rem;
+}
+
+.reserva__title a:hover {
+  color: var(--color-lime);
+}
+
+.reserva__when {
+  color: var(--color-text-muted);
+  text-transform: capitalize;
+}
+
+.reserva__status {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 2px var(--space-2);
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: var(--color-success);
+}
+
+.reserva--cancelada .reserva__status {
+  color: var(--color-error);
+}
+
+.reserva__pedido {
+  margin-top: var(--space-3);
+}
+
+.reserva__pedido h3 {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-orange);
+  margin-bottom: var(--space-1);
+}
+
+.reserva__pedido ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.reserva__pedido li {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  color: var(--color-text-muted);
+}
+
+.reserva__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px dashed var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.reserva__footer strong {
+  font-weight: 400;
+  color: var(--color-lime);
+  font-size: 1.2rem;
+}
+
+@media (max-width: 520px) {
+  .mis-entradas__form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .mis-entradas__form:has(.form-field__error) .btn {
+    margin-top: 0;
+  }
+
+  .reserva {
+    padding: var(--space-3);
+  }
+
+  .reserva__header {
+    flex-direction: column-reverse;
+    gap: var(--space-2);
+  }
+}

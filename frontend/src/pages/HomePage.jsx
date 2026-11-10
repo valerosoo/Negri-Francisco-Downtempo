@@ -1,6 +1,4 @@
 import { useCallback, useMemo, useState } from "react";
-import Navbar from "../components/layout/Navbar.jsx";
-import Footer from "../components/layout/Footer.jsx";
 import Hero from "../components/home/Hero.jsx";
 import EventsSection from "../components/events/EventsSection.jsx";
 import CheckoutDialog from "../components/events/CheckoutDialog.jsx";
@@ -25,24 +23,11 @@ function HomePage() {
 
   return (
     <>
-      <a href="#main-content" className="skip-link">
-        Saltar al contenido principal
-      </a>
-      <Navbar />
-      <main id="main-content">
-        <Hero evento={destacado} loading={loading} error={error} onComprar={setComprando} />
-        <EventsSection
-          eventos={proximos}
-          loading={loading}
-          error={error}
-          onRetry={reload}
-          onComprar={setComprando}
-        />
-        <DJSection />
-        <MenuSection />
-        <RooftopSection />
-      </main>
-      <Footer />
+      <Hero evento={destacado} loading={loading} error={error} onComprar={setComprando} />
+      <EventsSection eventos={proximos} loading={loading} error={error} onRetry={reload} onComprar={setComprando} />
+      <DJSection />
+      <MenuSection />
+      <RooftopSection />
 
       {comprando && <CheckoutDialog evento={comprando} onClose={cerrarCompra} onPurchased={reload} />}
     </>

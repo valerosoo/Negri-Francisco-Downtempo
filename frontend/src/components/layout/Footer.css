@@ -46,12 +46,26 @@
   color: var(--color-lime);
 }
 
-.footer__map {
-  margin-top: var(--space-2);
-  aspect-ratio: 16 / 10;
-  border-radius: var(--radius-sm);
-  background: var(--color-surface-raised);
-  border-top: 2px solid var(--color-orange);
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.footer__links a {
+  display: inline-block;
+  padding-block: var(--space-1);
+}
+
+.footer__links a:hover,
+.footer__admin:hover {
+  color: var(--color-lime);
+}
+
+.footer__admin {
+  border-bottom: 1px solid var(--color-border);
 }
 
 .footer__bottom {

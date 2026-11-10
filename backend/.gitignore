@@ -1,0 +1,4 @@
+node_modules/
+.env
+# Datos generados al usar la app (se recrean solos con los de ejemplo)
+data/

@@ -1,30 +1,23 @@
 import DJ from "../models/DJ.js";
-
-// Persistencia temporal en memoria
-const djs = [
-    new DJ(1, "Bonobo", "Downtempo", "Productor británico de música electrónica.", 120),
-    new DJ(2, "Tycho", "Chillwave", "Músico y productor estadounidense.", 85),
-    new DJ(3, "Nicolas Jaar", "Electrónica experimental", "Compositor chileno-estadounidense.", 97)
-];
-
-let nextId = djs.length + 1;
+import store from "../db/store.js";
 
 class DJRepository {
     findAll() {
-        return djs;
+        return store.get("djs");
     }
 
     findById(id) {
-        return djs.find((dj) => dj.idDJ === id);
+        return this.findAll().find((dj) => dj.idDJ === id);
     }
 
     findByNombre(nombre) {
-        return djs.find((dj) => dj.nombre.toLowerCase() === nombre.toLowerCase());
+        return this.findAll().find((dj) => dj.nombre.toLowerCase() === nombre.toLowerCase());
     }
 
     create({ nombre, generoMusical, biografia, cantidadLikes }) {
-        const dj = new DJ(nextId++, nombre, generoMusical, biografia, cantidadLikes);
-        djs.push(dj);
+        const dj = new DJ(store.nextId("djs"), nombre, generoMusical, biografia, cantidadLikes);
+        this.findAll().push(dj);
+        store.save();
         return dj;
     }
 
@@ -36,12 +29,22 @@ class DJRepository {
         dj.biografia = biografia;
         dj.cantidadLikes = cantidadLikes;
 
+        store.save();
+        return dj;
+    }
+
+    sumarLike(id) {
+        const dj = this.findById(id);
+        dj.cantidadLikes += 1;
+        store.save();
         return dj;
     }
 
     delete(id) {
+        const djs = this.findAll();
         const index = djs.findIndex((dj) => dj.idDJ === id);
         const [deleted] = djs.splice(index, 1);
+        store.save();
         return deleted;
     }
 }

@@ -5,7 +5,17 @@ import { Messages } from "../enums/Messages.js";
 
 class EventoController {
     getAll(req, res) {
-        return successResponse(res, eventoService.getAll());
+        const { genero, dj, desde, hasta, disponibles } = req.query;
+
+        const eventos = eventoService.getAll({
+            genero,
+            dj: dj ? Number(dj) : undefined,
+            desde,
+            hasta,
+            disponibles: disponibles === "true"
+        });
+
+        return successResponse(res, eventos);
     }
 
     getById(req, res) {

@@ -1,0 +1,102 @@
+.ticket-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* Entrada con "troquel" estilo ticket */
+.ticket {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3) var(--space-2) var(--space-2);
+  background: var(--color-void);
+  border: 1px dashed var(--color-lime);
+}
+
+.ticket__qr {
+  line-height: 0;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.ticket__info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.ticket__label {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.ticket__code {
+  font-size: 1.5rem;
+  letter-spacing: 0.16em;
+  color: var(--color-lime);
+  line-height: 1.2;
+}
+
+.ticket__guest {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ticket__status {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 2px var(--space-2);
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: var(--color-success);
+}
+
+.ticket--usada,
+.ticket--cancelada {
+  border-color: var(--color-border);
+}
+
+.ticket--usada .ticket__code,
+.ticket--cancelada .ticket__code {
+  color: var(--color-text-muted);
+}
+
+.ticket--usada .ticket__status {
+  color: var(--color-text-muted);
+}
+
+.ticket--cancelada .ticket__status {
+  color: var(--color-error);
+}
+
+.ticket--cancelada .ticket__qr {
+  opacity: 0.25;
+}
+
+.ticket--cancelada .ticket__code {
+  text-decoration: line-through;
+}
+
+@media (max-width: 420px) {
+  .ticket {
+    grid-template-columns: auto 1fr;
+  }
+
+  .ticket__status {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+
+  .ticket__code {
+    font-size: 1.25rem;
+    letter-spacing: 0.1em;
+  }
+}

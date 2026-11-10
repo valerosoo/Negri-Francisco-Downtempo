@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../ui/Button.jsx";
 import Spinner from "../ui/Spinner.jsx";
 import { estadoCupo, formatPrecio, partesFecha } from "../../utils/format.js";
@@ -64,6 +65,9 @@ function HeroEvento({ evento, onComprar }) {
           <Button onClick={() => onComprar(evento)} disabled={agotado}>
             {agotado ? "Agotado" : "Comprar entradas"}
           </Button>
+          <Link to={`/eventos/${evento.idEvento}`} className="hero__link">
+            Ver detalle del evento
+          </Link>
           <a href="#entradas" className="hero__link">
             Ver toda la cartelera
           </a>

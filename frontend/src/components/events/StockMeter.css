@@ -1,0 +1,36 @@
+.stock-meter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.stock-meter__bar {
+  height: 4px;
+  background: var(--color-border);
+  overflow: hidden;
+}
+
+.stock-meter__bar span {
+  display: block;
+  height: 100%;
+  background: var(--color-lime);
+}
+
+.stock-meter__text {
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.stock-meter--ultimas .stock-meter__bar span {
+  background: var(--color-orange);
+}
+
+.stock-meter--ultimas .stock-meter__text {
+  color: var(--color-orange);
+}
+
+.stock-meter--agotado .stock-meter__bar span {
+  background: var(--color-text-faint);
+}

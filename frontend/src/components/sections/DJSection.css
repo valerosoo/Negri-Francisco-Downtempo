@@ -1,3 +1,20 @@
 .dj-section h3 {
   font-size: 1.4rem;
 }
+
+.dj-section__intro {
+  max-width: 62ch;
+}
+
+/* El formulario acompaña el scroll mientras se recorre la lista de DJs. */
+.dj-section__form {
+  position: sticky;
+  top: 92px;
+  align-self: start;
+}
+
+@media (max-width: 640px) {
+  .dj-section__form {
+    position: static;
+  }
+}

@@ -93,51 +93,54 @@
   letter-spacing: 0.04em;
 }
 
-.event-card__meter {
-  height: 4px;
-  background: var(--color-border);
-  overflow: hidden;
+.event-card__name a:hover,
+.event-card__more:hover {
+  color: var(--color-lime);
 }
 
-.event-card__meter span {
-  display: block;
-  height: 100%;
-  background: var(--color-lime);
-}
-
-.event-card--ultimas .event-card__meter span {
-  background: var(--color-orange);
-}
-
-.event-card__stock {
-  font-size: 0.85rem;
+.event-card__more {
+  display: inline-block;
+  margin-top: var(--space-3);
+  font-size: 0.9rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-text-muted);
 }
 
-.event-card--ultimas .event-card__stock {
-  color: var(--color-orange);
-}
-
 @media (max-width: 760px) {
   .event-card {
-    grid-template-columns: 80px 1fr;
+    grid-template-columns: 72px 1fr;
+    gap: var(--space-3);
+    padding: var(--space-3);
+  }
+
+  .event-card:hover {
+    transform: none;
   }
 
   .event-card__day {
     font-size: 2.8rem;
   }
 
-  .event-card__buy {
-    grid-column: 1 / -1;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
+  .event-card__name {
+    font-size: 1.5rem;
   }
 
-  .event-card__meter {
-    display: none;
+  .event-card__buy {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    text-align: left;
+  }
+
+  .event-card__buy .stock-meter {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .event-card__buy .btn {
+    grid-column: 2;
+    grid-row: 1 / span 2;
   }
 }

@@ -7,10 +7,21 @@ import { Messages } from "../enums/Messages.js";
 class EventoService {
     // Devuelve la cartelera ordenada por fecha, con los DJs ya resueltos
     // (el front no tiene que cruzar ids contra /api/djs).
-    getAll() {
+    // Filtros opcionales: { genero, dj (id), desde, hasta, disponibles }.
+    getAll({ genero, dj, desde, hasta, disponibles } = {}) {
+        const generoBuscado = genero?.trim().toLowerCase();
+
         return eventoRepository
             .findAll()
             .map((evento) => this.#withDJs(evento))
+            .filter((evento) => !desde || evento.fecha >= desde)
+            .filter((evento) => !hasta || evento.fecha <= hasta)
+            .filter((evento) => !dj || evento.idsDJ.includes(dj))
+            .filter((evento) => !disponibles || evento.entradasDisponibles > 0)
+            .filter(
+                (evento) =>
+                    !generoBuscado || evento.djs.some((d) => d.generoMusical.toLowerCase() === generoBuscado)
+            )
             .sort((a, b) => a.fecha.localeCompare(b.fecha) || a.horaInicio.localeCompare(b.horaInicio));
     }
 
@@ -72,7 +83,7 @@ class EventoService {
         return { ...evento, djs };
     }
 
-    #normalize({ nombre, fecha, horaInicio, horaFin, capacidadMaxima, precio, idsDJ = [] }) {
+    #normalize({ nombre, fecha, horaInicio, horaFin, capacidadMaxima, precio, idsDJ = [], descripcion = "" }) {
         return {
             nombre: nombre.trim(),
             fecha,
@@ -80,7 +91,8 @@ class EventoService {
             horaFin,
             capacidadMaxima,
             precio,
-            idsDJ: [...new Set(idsDJ)]
+            idsDJ: [...new Set(idsDJ)],
+            descripcion: descripcion.trim()
         };
     }
 }

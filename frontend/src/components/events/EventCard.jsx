@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import Button from "../ui/Button.jsx";
+import StockMeter from "./StockMeter.jsx";
 import { estadoCupo, formatPrecio, partesFecha } from "../../utils/format.js";
 import "./EventCard.css";
 
@@ -6,7 +8,6 @@ function EventCard({ evento, onComprar }) {
   const { dia, mes, diaSemana } = partesFecha(evento.fecha);
   const cupo = estadoCupo(evento);
   const agotado = cupo === "agotado";
-  const vendido = Math.round(((evento.capacidadMaxima - evento.entradasDisponibles) / evento.capacidadMaxima) * 100);
 
   return (
     <li className={`event-card event-card--${cupo}`}>
@@ -17,7 +18,9 @@ function EventCard({ evento, onComprar }) {
       </div>
 
       <div className="event-card__body">
-        <h3 className="event-card__name">{evento.nombre}</h3>
+        <h3 className="event-card__name">
+          <Link to={`/eventos/${evento.idEvento}`}>{evento.nombre}</Link>
+        </h3>
         <p className="event-card__when">
           {diaSemana} {dia} de {mes} · {evento.horaInicio} a {evento.horaFin} hs
         </p>
@@ -31,25 +34,15 @@ function EventCard({ evento, onComprar }) {
             ))}
           </ul>
         )}
+
+        <Link to={`/eventos/${evento.idEvento}`} className="event-card__more">
+          Ver detalle<span className="visually-hidden"> de {evento.nombre}</span> →
+        </Link>
       </div>
 
       <div className="event-card__buy">
         <p className="event-card__price">{formatPrecio(evento.precio)}</p>
-
-        <div
-          className="event-card__meter"
-          role="img"
-          aria-label={`${vendido}% de las entradas vendidas`}
-        >
-          <span style={{ width: `${vendido}%` }} />
-        </div>
-        <p className="event-card__stock">
-          {agotado
-            ? "Agotado"
-            : cupo === "ultimas"
-              ? `¡Últimas ${evento.entradasDisponibles}!`
-              : `${evento.entradasDisponibles} disponibles`}
-        </p>
+        <StockMeter evento={evento} />
 
         <Button onClick={() => onComprar(evento)} disabled={agotado}>
           {agotado ? "Agotado" : "Comprar"}

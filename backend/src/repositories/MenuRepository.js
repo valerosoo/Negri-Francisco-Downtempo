@@ -1,21 +1,44 @@
 import ItemMenu from "../models/ItemMenu.js";
-
-// Persistencia temporal en memoria
-const items = [
-    new ItemMenu(1, "Negroni de la casa", "Gin, vermut rosso y Campari con naranja ahumada.", 7500, "Cocktails"),
-    new ItemMenu(2, "Pisco Sour", "Pisco, limón, almíbar y clara de huevo.", 7000, "Cocktails"),
-    new ItemMenu(3, "Mezcal Mule", "Mezcal, jengibre, lima y soda.", 8000, "Cocktails"),
-    new ItemMenu(4, "IPA artesanal", "Pinta de cerveza lupulada de productor local.", 5500, "Cervezas"),
-    new ItemMenu(5, "Honey", "Pinta de cerveza dorada suave.", 5000, "Cervezas"),
-    new ItemMenu(6, "Malbec", "Copa de tinto mendocino.", 6000, "Vinos"),
-    new ItemMenu(7, "Torrontés", "Copa de blanco aromático salteño.", 6000, "Vinos"),
-    new ItemMenu(8, "Mocktail de frutos rojos", "Frutos rojos, menta, limón y soda.", 4500, "Sin alcohol"),
-    new ItemMenu(9, "Limonada de jengibre", "Limón exprimido, jengibre y hielo.", 4000, "Sin alcohol")
-];
+import store from "../db/store.js";
 
 class MenuRepository {
     findAll() {
-        return items;
+        return store.get("items");
+    }
+
+    findById(id) {
+        return this.findAll().find((item) => item.idItem === id);
+    }
+
+    findByNombre(nombre) {
+        return this.findAll().find((item) => item.nombre.toLowerCase() === nombre.toLowerCase());
+    }
+
+    create({ nombre, descripcion, precio, categoria }) {
+        const item = new ItemMenu(store.nextId("items"), nombre, descripcion, precio, categoria);
+        this.findAll().push(item);
+        store.save();
+        return item;
+    }
+
+    update(id, { nombre, descripcion, precio, categoria }) {
+        const item = this.findById(id);
+
+        item.nombre = nombre;
+        item.descripcion = descripcion;
+        item.precio = precio;
+        item.categoria = categoria;
+
+        store.save();
+        return item;
+    }
+
+    delete(id) {
+        const items = this.findAll();
+        const index = items.findIndex((item) => item.idItem === id);
+        const [deleted] = items.splice(index, 1);
+        store.save();
+        return deleted;
     }
 }
 

@@ -1,3 +1,7 @@
+export const isPlainObject = (value) => {
+    return Boolean(value) && typeof value === "object" && !Array.isArray(value);
+};
+
 export const isNonEmptyString = (value) => {
     return typeof value === "string" && value.trim().length > 0;
 };

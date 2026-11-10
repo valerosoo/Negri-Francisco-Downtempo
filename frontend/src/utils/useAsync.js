@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 
 // Hook auxiliar para no repetir el patrón "loading / error / data" en cada
-// panel que consume un servicio. Lo usan MenuPanel, RooftopPanel y DJList.
+// pantalla que consume un servicio. Al recargar (reload) conserva los datos
+// anteriores mientras llegan los nuevos, así la pantalla no parpadea.
 export function useAsync(asyncFn, deps = []) {
   const [state, setState] = useState({ data: null, loading: true, error: null });
 

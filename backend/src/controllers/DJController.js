@@ -1,4 +1,5 @@
 import djService from "../services/DJService.js";
+import recomendacionService from "../services/RecomendacionService.js";
 import { successResponse } from "../responses/ApiResponse.js";
 import { HttpStatus } from "../enums/HttpStatus.js";
 import { Messages } from "../enums/Messages.js";
@@ -27,6 +28,28 @@ class DJController {
     delete(req, res) {
         const dj = djService.delete(Number(req.params.id));
         return successResponse(res, dj, HttpStatus.OK, Messages.DJ_DELETED);
+    }
+
+    like(req, res) {
+        const dj = djService.like(Number(req.params.id));
+        return successResponse(res, dj, HttpStatus.OK, Messages.DJ_LIKED);
+    }
+
+    getPlaylists(req, res) {
+        return successResponse(res, djService.getPlaylists(Number(req.params.id)));
+    }
+
+    getSimilares(req, res) {
+        return successResponse(res, djService.getSimilares(Number(req.params.id)));
+    }
+
+    getRecomendaciones(req, res) {
+        return successResponse(res, recomendacionService.getByDJ(Number(req.params.id)));
+    }
+
+    createRecomendacion(req, res) {
+        const recomendacion = recomendacionService.create(Number(req.params.id), req.body);
+        return successResponse(res, recomendacion, HttpStatus.CREATED, Messages.RECOMENDACION_CREATED);
     }
 }
 

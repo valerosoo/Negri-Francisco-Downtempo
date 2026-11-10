@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import HoursList from "../ui/HoursList.jsx";
+import VenueMap from "../ui/VenueMap.jsx";
 import "./Footer.css";
 
 function Footer() {
@@ -56,24 +58,36 @@ function Footer() {
         </div>
 
         <div>
-          <h4 className="footer__heading">Menú</h4>
-          <p className="footer__description">
-            No pierdas de vista el{" "}
-            <a href="#menu" className="accent">
-              menú
-            </a>{" "}
-            que te acompañará toda la noche.
-          </p>
+          <h4 className="footer__heading">Tu noche</h4>
+          <ul className="footer__links">
+            <li>
+              <Link to="/#entradas">Cartelera y entradas</Link>
+            </li>
+            <li>
+              <Link to="/mis-entradas">Mis entradas</Link>
+            </li>
+            <li>
+              <Link to="/#menu">Menú</Link>
+            </li>
+            <li>
+              <Link to="/#djs">DJs</Link>
+            </li>
+          </ul>
         </div>
 
         <div id="footer-ubicacion">
           <h4 className="footer__heading">Encontranos</h4>
-          <div className="footer__map" role="img" aria-label="Mapa de ubicación de Downtempo (próximamente)" />
+          <VenueMap />
         </div>
       </div>
 
       <div className="footer__bottom">
-        <p className="container">© 2026 Downtempo · Todos los derechos reservados</p>
+        <p className="container">
+          © 2026 Downtempo · Todos los derechos reservados ·{" "}
+          <Link to="/admin" className="footer__admin">
+            Administración
+          </Link>
+        </p>
       </div>
     </footer>
   );

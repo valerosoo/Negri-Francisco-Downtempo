@@ -1,50 +1,66 @@
-import Reserva from "../models/Reserva.js";
+import Reserva, { EstadoReserva } from "../models/Reserva.js";
 import Entrada from "../models/Entrada.js";
-
-// Persistencia temporal en memoria
-const reservas = [];
-
-let nextReservaId = 1;
-let nextEntradaId = 1;
+import store from "../db/store.js";
 
 class ReservaRepository {
     findAll() {
-        return reservas;
+        return store.get("reservas");
     }
 
     findById(id) {
-        return reservas.find((reserva) => reserva.idReserva === id);
+        return this.findAll().find((reserva) => reserva.idReserva === id);
     }
 
     findByEvento(idEvento) {
-        return reservas.filter((reserva) => reserva.idEvento === idEvento);
+        return this.findAll().filter((reserva) => reserva.idEvento === idEvento);
+    }
+
+    findByEmail(email) {
+        return this.findAll().filter((reserva) => reserva.email === email);
     }
 
     existsCodigo(codigo) {
-        return reservas.some((reserva) => reserva.entradas.some((entrada) => entrada.codigo === codigo));
+        return Boolean(this.findByCodigo(codigo));
     }
 
     findByCodigo(codigo) {
-        for (const reserva of reservas) {
+        for (const reserva of this.findAll()) {
             const entrada = reserva.entradas.find((e) => e.codigo === codigo);
             if (entrada) return { reserva, entrada };
         }
         return undefined;
     }
 
-    create({ idEvento, nombreCliente, email, codigos }) {
-        const entradas = codigos.map((codigo) => new Entrada(nextEntradaId++, codigo, nombreCliente));
+    create({ idEvento, idCliente, nombreCliente, email, codigos, pedido }) {
+        const entradas = codigos.map((codigo) => new Entrada(store.nextId("entradas"), codigo, nombreCliente));
         const reserva = new Reserva(
-            nextReservaId++,
+            store.nextId("reservas"),
             new Date().toISOString(),
             entradas.length,
             idEvento,
             nombreCliente,
             email,
-            entradas
+            entradas,
+            idCliente,
+            pedido
         );
-        reservas.push(reserva);
+        this.findAll().push(reserva);
+        store.save();
         return reserva;
+    }
+
+    cancelar(id) {
+        const reserva = this.findById(id);
+        reserva.estado = EstadoReserva.CANCELADA;
+        store.save();
+        return reserva;
+    }
+
+    marcarEntradaUsada(codigo) {
+        const { entrada } = this.findByCodigo(codigo);
+        entrada.usada = true;
+        store.save();
+        return entrada;
     }
 }
 

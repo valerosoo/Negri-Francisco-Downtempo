@@ -4,13 +4,19 @@
   padding: var(--space-3);
   border-left: 3px solid var(--color-orange);
   background: var(--color-surface-raised);
+  scroll-margin-top: 92px;
+}
+
+.dj-card--open {
+  border-left-color: var(--color-lime);
 }
 
 .dj-card__header {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: var(--space-2);
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-2);
 }
 
 .dj-card__header h4 {
@@ -23,8 +29,7 @@
   font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-text-faint);
-  white-space: nowrap;
+  color: var(--color-text-muted);
 }
 
 .dj-card__bio {
@@ -39,13 +44,15 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-2);
-  margin-top: var(--space-3);
+  margin-top: var(--space-2);
 }
 
 .dj-card__like {
   display: flex;
   align-items: center;
   gap: var(--space-1);
+  min-height: 44px;
+  padding-inline: var(--space-1);
   font-size: 0.95rem;
   color: var(--color-text-muted);
   font-variant-numeric: tabular-nums;
@@ -59,7 +66,130 @@
   color: var(--color-text);
 }
 
-.dj-card__manage {
+.dj-card__detail {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px dashed var(--color-border);
+}
+
+/* Ficha del DJ: playlists, parecidos y recomendaciones */
+.dj-detail__block + .dj-detail__block {
+  margin-top: var(--space-4);
+}
+
+.dj-detail__title {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-orange);
+  margin-bottom: var(--space-2);
+}
+
+.dj-detail__empty {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.playlist__name {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.playlist__songs {
+  counter-reset: cancion;
+  margin-block: var(--space-1) var(--space-3);
+}
+
+.playlist__songs li {
+  counter-increment: cancion;
+  display: grid;
+  grid-template-columns: 1.6em 1fr auto;
+  align-items: center;
+  gap: var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.playlist__songs li::before {
+  content: counter(cancion);
+  color: var(--color-text-faint);
+  font-size: 0.85rem;
+}
+
+.playlist__songs a {
+  padding-block: var(--space-2);
+  min-width: 0;
+}
+
+.playlist__songs a:hover {
+  color: var(--color-lime);
+}
+
+.playlist__songs a::after {
+  content: " ↗";
+  color: var(--color-text-faint);
+}
+
+.playlist__duration {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.dj-detail__similar {
   display: flex;
-  gap: var(--space-1);
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.dj-detail__similar button {
+  min-height: 40px;
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.9rem;
+}
+
+.dj-detail__similar button:hover {
+  border-color: var(--color-lime);
+  color: var(--color-lime);
+}
+
+.dj-detail__similar small {
+  color: var(--color-text-muted);
+  margin-left: var(--space-1);
+}
+
+.dj-detail__recs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.dj-detail__recs li {
+  font-size: 0.95rem;
+  padding-left: var(--space-2);
+  border-left: 2px solid var(--color-border);
+}
+
+.dj-detail__recs p {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.rec-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+
+@media (max-width: 420px) {
+  .rec-form__row {
+    grid-template-columns: 1fr;
+  }
 }

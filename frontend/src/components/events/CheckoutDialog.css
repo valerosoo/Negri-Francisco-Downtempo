@@ -1,40 +1,3 @@
-.checkout__overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-3);
-  z-index: 2500;
-  overflow-y: auto;
-}
-
-.checkout {
-  position: relative;
-  width: min(480px, 100%);
-  max-height: 100%;
-  overflow-y: auto;
-  background: var(--color-surface-raised);
-  border: 1px solid var(--color-border);
-  border-top: 4px solid var(--color-lime);
-  padding: var(--space-4);
-  box-shadow: var(--shadow-raised);
-}
-
-.checkout__close {
-  position: absolute;
-  top: var(--space-2);
-  right: var(--space-3);
-  font-size: 1.8rem;
-  line-height: 1;
-  color: var(--color-text-muted);
-}
-
-.checkout__close:hover {
-  color: var(--color-lime);
-}
-
 .checkout .eyebrow {
   color: var(--color-orange);
 }
@@ -42,6 +5,7 @@
 .checkout__title {
   font-size: 1.8rem;
   margin-top: var(--space-1);
+  padding-right: var(--space-5);
 }
 
 .checkout__when {
@@ -59,40 +23,80 @@
   letter-spacing: 0.08em;
 }
 
-.checkout__stepper {
-  display: inline-flex;
-  align-items: center;
-  border: 1px solid var(--color-border);
-}
-
-.checkout__stepper button {
-  width: 40px;
-  height: 40px;
-  font-size: 1.4rem;
-  color: var(--color-lime);
-}
-
-.checkout__stepper button:disabled {
-  color: var(--color-text-faint);
-  cursor: not-allowed;
-}
-
-.checkout__stepper output {
-  min-width: 44px;
-  text-align: center;
-  font-size: 1.3rem;
-}
-
 .checkout__stock {
   margin-left: auto;
   font-size: 0.8rem;
   color: var(--color-text-faint);
 }
 
-.checkout__total {
+/* Pre-pedido del menú */
+.checkout__preorder {
+  border: 1px solid var(--color-border);
+  margin-bottom: var(--space-3);
+}
+
+.checkout__preorder summary {
   display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.checkout__preorder summary span {
+  color: var(--color-text-faint);
+  font-size: 0.85rem;
+}
+
+.checkout__preorder summary strong {
+  margin-left: auto;
+  min-width: 26px;
+  text-align: center;
+  font-weight: 400;
+  background: var(--color-lime);
+  color: var(--color-lime-ink);
+  border-radius: 999px;
+}
+
+.checkout__preorder .checkout__note {
+  padding-inline: var(--space-3);
+  margin-block: 0 var(--space-2);
+}
+
+.checkout__menu {
+  max-height: 240px;
+  overflow-y: auto;
+  border-top: 1px solid var(--color-border);
+}
+
+.checkout__menu li {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: baseline;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+}
+
+.checkout__menu li + li {
+  border-top: 1px solid var(--color-border);
+}
+
+.checkout__menu-name {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+.checkout__menu-meta {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* Resumen y total */
+.checkout__summary {
   margin-block: var(--space-4) var(--space-3);
   padding-top: var(--space-3);
   border-top: 1px dashed var(--color-border);
@@ -100,13 +104,25 @@
   letter-spacing: 0.08em;
 }
 
-.checkout__total strong {
-  font-weight: 400;
+.checkout__summary div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-3);
+  color: var(--color-text-muted);
+}
+
+.checkout__summary .checkout__total {
+  color: var(--color-text);
+  margin-top: var(--space-1);
+}
+
+.checkout__total dd {
   font-size: 2rem;
   color: var(--color-lime);
 }
 
-.checkout .btn {
+.checkout form > .btn {
   width: 100%;
 }
 
@@ -116,31 +132,12 @@
   color: var(--color-text-faint);
 }
 
-.checkout__tickets {
+.checkout__actions {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: var(--space-2);
 }
 
-/* Entrada con "troquel" estilo ticket */
-.ticket {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--space-3);
-  background: var(--color-void);
-  border: 1px dashed var(--color-lime);
-}
-
-.ticket__label {
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-text-muted);
-  font-size: 0.9rem;
-}
-
-.ticket__code {
-  font-size: 1.5rem;
-  letter-spacing: 0.18em;
-  color: var(--color-lime);
+.checkout__actions .btn {
+  flex: 1 1 160px;
 }
